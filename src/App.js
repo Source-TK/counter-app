@@ -1,23 +1,46 @@
 import logo from './logo.svg';
 import './App.css';
 
+import Display from './components/display'
+import Button from './components/button'
+
+import {useState} from 'react'
+
 function App() {
+
+  const [counter, setCount] = useState(0);
+
+  const [name, setName] = useState("Kgopolo")
+
+  var c = 0;
+
+  const changeName = () => {
+    setName("Vincent")
+
+  }
+
+  const increment = () => {
+
+    let sum = counter + 1;
+    setCount(sum);
+  }
+
+  const decrement = () => {
+    let sum = counter - 1;
+    setCount(sum);
+
+  } 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Display counter={counter} />
+      <Button increment={increment} />
+      <h1>{name}</h1>
+      <button onClick={changeName}>SET NAME</button>
+
+
+
     </div>
   );
 }
